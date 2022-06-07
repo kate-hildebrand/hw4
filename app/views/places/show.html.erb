@@ -14,19 +14,16 @@
     <div class="col-md-3 col-sm-6">
       <h2><%= post["title"] %></h2>
       <h5><%= post["posted_on"] %></h5>
-      <h3> Image </h3>
+      <h3> <% post["image"]%> </h3>
       <p><%= post["description"] %></p>
       <%#<img src="<%= post["image"] %> <%#" class="img-fluid">
       <p><%= post["body"] %></p>
     </div>
   <% end %>
   <%else%>
-  Please login to post and see posts 
+  Login and click "new posts" to get started!
   <% end%>
 </div>
 
 
 
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
