@@ -1,20 +1,31 @@
 <h1><%= @place["name"] %></h1>
 
+<hr class="my-4">
+      <div class="col-sm-1 text-end">
+        <a href="/posts/new?place_id=<%= @place["id"] %>" class="btn btn-success">New Post</a>
+      </div>
+
 <% @posts =Post.where({"user_id" => session["user_id"],"place_id" =>@place["id"]})%>
 <% if @posts.any?%>
-    <h2>My Posts</h2>
-    <% for post in @posts %>
-      <h3><%= post["title"] %></h3>
-      <h4><%= post["posted_on"] %></h4>
-      <p><%= post["description"] %></p>
-    <% end %>
-    <% else %>
-    <p> You don't have any posts for this place </p>
-    <%end%>
 
-<p>
-  <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
-</p>
+
+<div class="row">
+  <% for post in @posts %>
+    <div class="col-md-3 col-sm-6">
+      <h2><%= post["title"] %></h2>
+      <h5><%= post["posted_on"] %></h5>
+      <h3> Image </h3>
+      <p><%= post["description"] %></p>
+      <%#<img src="<%= post["image"] %> <%#" class="img-fluid">
+      <p><%= post["body"] %></p>
+    </div>
+  <% end %>
+  <%else%>
+  Please login to post and see posts 
+  <% end%>
+</div>
+
+
 
 <p>
   <a href="/places">Back to All Places</a>
